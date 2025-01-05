@@ -2,15 +2,13 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/signoup", (req, res) => {
-    res.send("sign up");
-});
+router.post("/signoup", );
 
-router.get("/login", (req, res) => {
+router.post("/login", (req, res) => {
     res.send("log in");
 });
 
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
     res.send("log out");
 });
 
