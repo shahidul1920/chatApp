@@ -87,5 +87,6 @@ export const logout = (req, res) => {
 }
 
 export const updateProfile = async (req, res) =>{
-
+   return console.log('ff');
+    
 }
