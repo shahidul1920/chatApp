@@ -23,6 +23,6 @@ export const protectRoute = async (req, res, next) =>{
         next()
     } catch (error) {
         console.log("Error in pro");
-        
+        return res.status(500).json({message: "Invalid action"})
     }
 }
