@@ -37,6 +37,9 @@ export default function SignUpPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const success = validationForm();
+    if (success === true) signup(formData);
   };
 
   return (
