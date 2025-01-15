@@ -27,7 +27,7 @@ backdrop-blur-lg bg-base-100/80"
 
           <div className="flex items-center gap-2">
             <Link
-              to={"/settings"}
+              to={"/setting"}
               className={`
           btn btn-sm gap-2 transition-colors
           
