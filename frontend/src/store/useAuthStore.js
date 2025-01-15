@@ -47,7 +47,18 @@ export const useAuthStore = create((set) => ({
         }
     },
 
-    updateProfile: async () => {
-        
+    updateProfile: async (data) => {
+        set({isUpdateingProfile: true});
+        try {
+            const res = await axiosIns.put("/auth/update-profile", data);
+            set({authUser: res.data});
+            toast.success("profile Updated")
+        } catch (error) {
+            //toast.error(error.response.data.message);
+            toast.error("Internal server fucked up", error);
+        }finally{
+            set({isUpdateingProfile: false})
+        }
+
     }
 }))

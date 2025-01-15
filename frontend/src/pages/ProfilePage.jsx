@@ -32,7 +32,11 @@ export default function ProfilePage() {
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <img
-                src={selectedImg || authUser.profilePic || "/avatar.png"}
+                src={
+                  selectedImg ||
+                  authUser.profilePic ||
+                  "https://thumbs.dreamstime.com/b/tashkent-uzbekistan-september-super-mario-world-bros-pixelated-retro-video-game-characters-pixel-art-vector-illustration-old-239815848.jpg"
+                }
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4 "
               />
