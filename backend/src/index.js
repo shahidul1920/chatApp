@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser())
 app.use("/api/auth", authRoutes);
-app.use("/api/message", messageRoutes);
+app.use("/api/messages", messageRoutes);
 //app.use(cors())
 
 
