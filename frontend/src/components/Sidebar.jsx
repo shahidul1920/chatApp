@@ -6,6 +6,8 @@ import { Users } from "lucide-react";
 export default function Sidebar() {
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } =
     useChatStore();
+  console.log("u", users);
+
   const onlineUsers = [];
 
   useEffect(() => {
@@ -37,7 +39,10 @@ export default function Sidebar() {
           >
             <div className="relative mx-auto lg:mx-0">
               <img
-                src={user.profilePic || ""}
+                src={
+                  user.profilePic ||
+                  "https://thumbs.dreamstime.com/b/tashkent-uzbekistan-september-super-mario-world-bros-pixelated-retro-video-game-characters-pixel-art-vector-illustration-old-239815848.jpg"
+                }
                 alt={user.name}
                 className="size-12 object-cover rounded-full"
               />
