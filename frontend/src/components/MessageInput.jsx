@@ -1,18 +1,47 @@
 import React, { useRef, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
-import { Image, X } from "lucide-react";
+import { Image, Send, X } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function MessageInput() {
   const [text, setText] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const fileInput = useRef(null);
-  const { sendMessage } = useChatStore();
+  const { sendMessages } = useChatStore();
 
-  const handleImageChange = (e) => {};
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please select an image file");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
-  const removeImage = () => {};
+  const removeImage = () => {
+    setImagePreview(null);
+    if (fileInput.current) fileInput.current.value = "";
+  };
 
-  const handleSendMessage = async (e) => {};
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (!text.trim() && !imagePreview) return;
+    try {
+      await sendMessages({
+        text: text.trim(),
+        image: imagePreview,
+      });
+      setText("");
+      setImagePreview(null);
+      if (fileInput.current) fileInput.current.value = "";
+    } catch (error) {
+      console.error("Failed to send message:", error);
+    }
+  };
   return (
     <div className="p-4 w-full">
       {imagePreview && (
@@ -58,6 +87,13 @@ export default function MessageInput() {
             <Image size={20} />
           </button>
         </div>
+        <button
+          type="submit"
+          className="btn btn-sm btn-circle"
+          disabled={!text.trim() && !imagePreview}
+        >
+          <Send size={22} />
+        </button>
       </form>
     </div>
   );
