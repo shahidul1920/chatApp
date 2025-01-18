@@ -30,6 +30,8 @@ export default function MessageInput() {
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!text.trim() && !imagePreview) return;
+    console.log("hello");
+
     try {
       await sendMessages({
         text: text.trim(),

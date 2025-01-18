@@ -55,6 +55,16 @@ export default function ChatContainer() {
                 {message.createdAt}
               </time>
             </div>
+            <div className="flex flex-col chat-bubble">
+              {message.image && (
+                <img
+                  src={message.image}
+                  alt="Attachment"
+                  className="sm:max-w-[200] rounded-md mb-2"
+                />
+              )}
+              {message.text && <p>{message.text}</p>}
+            </div>
           </div>
         ))}
       </div>
