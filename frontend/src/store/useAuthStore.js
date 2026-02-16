@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 //import { connect } from "http2";
 import {io} from "socket.io-client";
 
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "http://localhost:5001"
 
 export const useAuthStore = create((set, get ) => ({
     authUser: null,
@@ -99,7 +99,7 @@ export const useAuthStore = create((set, get ) => ({
         socket.connect()
         set({socket: socket})
 
-        socket.on("getOnlineUser", (userIds) => {
+        socket.on("getOnlineUsers", (userIds) =>{
             set({onlineUsers: userIds})
         } )
     },
