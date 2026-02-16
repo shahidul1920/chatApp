@@ -110,9 +110,9 @@ Start the frontend development server:
 npm run dev
 ```
 
-## 📸 Screenshots
+<!-- ## 📸 Screenshots
 
-*(Add screenshots of your application here)*
+*(Add screenshots of your application here)* -->
 
 ## 🤝 Contributing
 
